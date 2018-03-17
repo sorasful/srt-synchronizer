@@ -13,7 +13,7 @@ def add_offset_to_date(date:str, offset):
 
     return formatted_new_date
 
-def convert_text(text, offset):
+def convert_text_with_new_offset(text, offset):
     """
     Function to offset the content of a srt file.
     """

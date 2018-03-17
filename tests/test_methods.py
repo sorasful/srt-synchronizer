@@ -1,4 +1,4 @@
-from app.methods import add_offset_to_date, convert_text
+from app.methods import add_offset_to_date, convert_text_with_new_offset
 
 
 def test_replace_with_offset_success():
@@ -22,7 +22,7 @@ De wereld is veranderdàë中文.
 Ik voel het in het water.
 """
 
-    assert convert_text(original_text, offset=offset) == expected_text
+    assert convert_text_with_new_offset(original_text, offset=offset) == expected_text
 
 
 def test_convert_date_success():
