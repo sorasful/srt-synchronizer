@@ -1,19 +1,28 @@
-import datetime
-
 from app.methods import add_offset_to_date, convert_text
 
 
-def test_replace_with_offset():
-    orginal_content = """
-    
-    """
+def test_replace_with_offset_success():
+    offset = 0, 10, 10, 0
 
-    expected_output = """
-    
-    
-    """
+    original_text = """1
+00:00:34,687 --> 00:00:37,709
+De wereld is veranderdàë中文.
 
-    assert 1 == "ok"
+2
+00:00:37,732 --> 00:00:40,209
+Ik voel het in het water.
+"""
+
+    expected_text = """1
+00:10:44,687 --> 00:10:47,709
+De wereld is veranderdàë中文.
+
+2
+00:10:47,732 --> 00:10:50,209
+Ik voel het in het water.
+"""
+
+    assert convert_text(original_text, offset=offset) == expected_text
 
 
 def test_convert_date_success():
