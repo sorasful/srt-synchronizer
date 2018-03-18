@@ -22,7 +22,7 @@ by 1 hour but only using seconds or minutes it should work.
     
 ## Run on docker
     cd srt-synchrosizer/
-    docker build -t . srt-synchronizer
+    docker build -t srt-synchronizer .
     docker run -d -p 5000:5000
 
 Then go to `http://localhost:5000/`
