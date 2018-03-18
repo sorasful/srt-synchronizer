@@ -17,7 +17,14 @@
     <form action="{{ url_for('index') }}" enctype="multipart/form-data" method="post">
         {{ form.hidden_tag() }}
 
+        <p>Select file :</p>
         {{ form.file }}
+
+        <p>or enter directly the content of your .srt file</p>
+
+        {{ form.text }}
+        <br>
+
         {{ form.hours }}
         {{ form.minuts }}
         {{ form.seconds }}

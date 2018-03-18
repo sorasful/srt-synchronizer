@@ -13,11 +13,13 @@ def add_offset_to_date(date:str, offset):
 
     return formatted_new_date
 
+
 def convert_text_with_new_offset(text, offset):
     """
     Function to offset the content of a srt file.
     """
     output = ""
+
     regex_dialogs = re.compile(r"(\d+\s+(\d+:\d+:\d+,\d+) --> (\d+:\d+:\d+,\d+)\n[<>\w\sç'\.\/,êéèàùûôü\(\)\!\?\"♪\$€#&\:]+\s$)", re.MULTILINE)
     for dialog_part, start_time, end_time in re.findall(regex_dialogs, text):
         new_start_time = add_offset_to_date(start_time, offset)
