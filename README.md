@@ -3,11 +3,10 @@
 requires Python3.6+
 
 ## Purpose
-Flask web app whose purpose is to help you offset your desynchronized files easily by selecting files from your computer 
-or directly by enter the content to offset.
-You can pass any value that you want in the offset. If you want to offset your subtitles
-by 1 hour but only using seconds or minutes it should work.
-
+Flask web app whose purpose is to help you to synchronize files easily by selecting files from your computer 
+or directly by enter the content to synchronize..
+You can pass any value that you want in the offset. You can add 100 seconds and it should automatically
+translate into minutes.
 ## Clone the project  
     git clone git@github.com:sorasful/srt-synchronizer.git
 
@@ -21,7 +20,7 @@ by 1 hour but only using seconds or minutes it should work.
     python app.py
     
 ## Run on docker
-    cd srt-synchrosizer/
+    cd srt-synchronizer/
     docker build -t srt-synchronizer .
     docker run -d -p 5000:5000
 

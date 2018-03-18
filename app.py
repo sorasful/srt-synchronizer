@@ -1,7 +1,5 @@
 from app import app
-import sys
-
-sys.path.append('app')
+from config import Config
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host=Config.HOST, debug=Config.DEBUG)
