@@ -1,4 +1,6 @@
 import os
+import random
+
 from flask import render_template, request, flash, redirect, url_for, make_response
 from werkzeug.utils import secure_filename
 
@@ -20,10 +22,9 @@ def index():
 
         text_area_content = form.text.data
         if text_area_content != "":
-            print(text_area_content)
             result = convert_text_with_new_offset(text_area_content, offset)
             response = make_response(result)
-            response.headers["Content-Disposition"] = "attachment; filename={}".format("lolff.srt")
+            response.headers["Content-Disposition"] = "attachment; filename={}".format("new_subtitles_offset.srt")
             return response
 
         if 'file' not in request.files:
@@ -37,7 +38,7 @@ def index():
 
         if file and file.filename.split('.')[-1] in Config.ALLOWED_EXTENSIONS:
             filename = secure_filename(file.filename)
-            file_content = file.stream.read().decode('utf-16')  # TODO : See why it doens't pass thourh the regex ..
+            file_content = file.stream.read().decode('utf-8', errors='ignore')  # TODO : Find a better alternative to decode
             result = convert_text_with_new_offset(file_content, offset)
             response = make_response((result))
             response.headers["Content-Disposition"] = "attachment; filename={}".format(filename)
