@@ -18,7 +18,7 @@ def convert_text_with_new_offset(text, offset):
     """
     Function to offset the content of a srt file.
     """
-    output = ""
+    dialog_parts = []
     text = text.replace('\r', '')
     regex_dialogs = re.compile(r"(\d+\s+(\d+:\d+:\d+,\d+) --> (\d+:\d+:\d+,\d+)\s+(.+\s?)+)", re.MULTILINE)
     for dialog_part, start_time, end_time, _ in re.findall(regex_dialogs, text):
@@ -26,6 +26,7 @@ def convert_text_with_new_offset(text, offset):
         new_end_time = add_offset_to_date(end_time, offset)
         new_dialog_part = re.sub(r"\d+:\d+:\d+,\d+ --> \d+:\d+:\d+,\d+", f"{new_start_time} --> {new_end_time}", dialog_part)
 
-        output += new_dialog_part + "\n"
+        dialog_parts.append(new_dialog_part)
 
-    return output[:-1]  # To remove extra added \n
+    output = "\n".join(dialog_parts)
+    return output
